@@ -6,13 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
+    //public static ScoreManager instance;
+
     public Text scoreText;
     public Text LastScoreText;
     public Text moneyText;
     
     int score;
     int LastScore;
-    int money;
+    public int money;
+    public int Multiplier = 1;
 
     
     void Start()
@@ -23,6 +26,7 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = score.ToString();
         LastScoreText.text = LastScore.ToString() + " POINTS";
         moneyText.text = money.ToString();
+        
     }
 
     
@@ -32,9 +36,9 @@ public class ScoreManager : MonoBehaviour
             GameController.health = 0;
         }
         if (target.tag == "watermelon") {
-            score = score + 10;
+            score = score + (10*Multiplier);
             LastScore = score;
-            money = money + 10;
+            money = money + (10*Multiplier);
             Destroy (target.gameObject);
             scoreText.text = score.ToString();
             LastScoreText.text = LastScore.ToString() + " POINTS";
@@ -44,9 +48,9 @@ public class ScoreManager : MonoBehaviour
         }
         if (target.tag == "strawberry") {
             Destroy (target.gameObject);
-            score = score + 2;
+            score = score + (2*Multiplier);
             LastScore = score;
-            money = money + 2;
+            money = money + (2*Multiplier);
             scoreText.text = score.ToString();
             LastScoreText.text = LastScore.ToString() + " POINTS";
             moneyText.text = money.ToString();
@@ -55,9 +59,9 @@ public class ScoreManager : MonoBehaviour
         }
         if (target.tag == "apple") {
             Destroy (target.gameObject);
-            score = score + 5;
+            score = score + (15*Multiplier);
             LastScore = score;
-            money = money + 5;
+            money = money + (15*Multiplier);
             scoreText.text = score.ToString();
             LastScoreText.text = LastScore.ToString() + " POINTS";
             moneyText.text = money.ToString();
@@ -65,6 +69,11 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt("money", money);
         }
 
+    }
+
+
+    void buyItem(){
+        moneyText.text = money.ToString();
     }
 }
 
