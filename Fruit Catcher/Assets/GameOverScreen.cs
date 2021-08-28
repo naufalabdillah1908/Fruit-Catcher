@@ -10,5 +10,10 @@ public class GameOverScreen : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     
 }

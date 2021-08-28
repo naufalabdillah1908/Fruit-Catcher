@@ -45,11 +45,11 @@ TagManager:
   - name: BACKGROUND
     uniqueID: 1007418541
     locked: 0
-  - name: UI
-    uniqueID: 2594887647
-    locked: 0
   - name: Player
     uniqueID: 3132996113
+    locked: 0
+  - name: UI
+    uniqueID: 2594887647
     locked: 0
   - name: Default
     uniqueID: 0

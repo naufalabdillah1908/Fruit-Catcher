@@ -12,8 +12,9 @@ public class ScoreManager : MonoBehaviour
     public Text LastScoreText;
     public Text moneyText;
     
-    int score;
-    int LastScore;
+    public int score;
+    public int LastScore;
+    public int HighScore;
     public int money;
     public int Multiplier = 1;
 
@@ -21,6 +22,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         money = PlayerPrefs.GetInt("money", 0);
+        HighScore = PlayerPrefs.GetInt("HS", 0);
         score = 0;
         //scoreText = GetComponent<Text> ();
         scoreText.text = score.ToString();
@@ -36,6 +38,7 @@ public class ScoreManager : MonoBehaviour
             GameController.health = 0;
         }
         if (target.tag == "watermelon") {
+            GetComponent<AudioSource>().Play();
             score = score + (10*Multiplier);
             LastScore = score;
             money = money + (10*Multiplier);
@@ -45,8 +48,14 @@ public class ScoreManager : MonoBehaviour
             moneyText.text = money.ToString();
             print(score);
             PlayerPrefs.SetInt("money", money);
+            if (LastScore >= HighScore)
+            {
+                HighScore = LastScore;
+                PlayerPrefs.SetInt("HS", HighScore);
+            }
         }
         if (target.tag == "strawberry") {
+            GetComponent<AudioSource>().Play();
             Destroy (target.gameObject);
             score = score + (2*Multiplier);
             LastScore = score;
@@ -56,8 +65,14 @@ public class ScoreManager : MonoBehaviour
             moneyText.text = money.ToString();
             print(score);
             PlayerPrefs.SetInt("money", money);
+            if (LastScore >= HighScore)
+            {
+                HighScore = LastScore;
+                PlayerPrefs.SetInt("HS", HighScore);
+            }
         }
         if (target.tag == "apple") {
+            GetComponent<AudioSource>().Play();
             Destroy (target.gameObject);
             score = score + (15*Multiplier);
             LastScore = score;
@@ -67,6 +82,11 @@ public class ScoreManager : MonoBehaviour
             moneyText.text = money.ToString();
             print(score);
             PlayerPrefs.SetInt("money", money);
+            if (LastScore >= HighScore)
+            {
+                HighScore = LastScore;
+                PlayerPrefs.SetInt("HS", HighScore);
+            }
         }
 
     }

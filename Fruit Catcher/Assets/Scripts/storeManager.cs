@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 
 public class storeManager : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class storeManager : MonoBehaviour
     public PlayerMovement script;
     public ScoreManager script2;
     public ItemStore itemStore1, itemStore2, itemStore3, Multiplier1, Multiplier2, Multiplier3;
+    public Text moneyText;
 
     public bool item1 = false;
     public bool item2 = false;
@@ -17,6 +18,7 @@ public class storeManager : MonoBehaviour
     public bool multi2 = false;
     public bool multi3 = false;
 
+    
     public void HideControl() 
     {
         if (Time.timeScale == 1) {
@@ -34,6 +36,7 @@ public class storeManager : MonoBehaviour
             script2.money = script2.money - itemStore1.harga;
             item1 = true;
             print(script2.money);
+            moneyText.text = script2.money.ToString();
             //itemStore1.buyItem();
         }
         
@@ -45,6 +48,7 @@ public class storeManager : MonoBehaviour
             script2.money = script2.money - itemStore2.harga;
             item2 = true;
             print(script2.money);
+            moneyText.text = script2.money.ToString();
 
         }
     }
@@ -55,6 +59,7 @@ public class storeManager : MonoBehaviour
             script2.money = script2.money - itemStore3.harga;
             item3 = true;
             print(script2.money);
+            moneyText.text = script2.money.ToString();
         }
     }
 
@@ -64,6 +69,7 @@ public class storeManager : MonoBehaviour
             script2.money = script2.money - Multiplier1.harga;
             print("Multiplier upgraded");
             multi1 = true;
+            moneyText.text = script2.money.ToString();
         }
     }
 
@@ -73,6 +79,7 @@ public class storeManager : MonoBehaviour
             script2.money = script2.money - Multiplier1.harga;
             print("Multiplier upgraded");
             multi2 = true;
+            moneyText.text = script2.money.ToString();
         }
     }
 
@@ -82,6 +89,7 @@ public class storeManager : MonoBehaviour
             script2.money = script2.money - Multiplier1.harga;
             print("Multiplier upgraded");
             multi3 = true;
+            moneyText.text = script2.money.ToString();
         }
     }
 

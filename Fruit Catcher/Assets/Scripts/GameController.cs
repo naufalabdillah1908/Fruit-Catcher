@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour
 {
     public GameObject heart1, heart2, heart3, gameOver;
     public static int health;
-    public int money;
 
     // Start is called before the first frame update
     void Start()
